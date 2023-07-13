@@ -1,0 +1,24 @@
+<html>
+
+<script>
+    function onClick(){
+        if (document.getElementById("button1").innerHTML == "Home Jersey") {
+            document.getElementById("button1").innerHTML = "Away Jersey";
+            document.getElementById('button1').style.backgroundColor = "gold";
+            document.getElementById("img1").src = "https://rb.gy/9x8mz";
+        }
+        else {
+            document.getElementById("button1").innerHTML = "Home Jersey";
+            document.getElementById('button1').style.backgroundColor = "white";
+            document.getElementById('button1').style.color = "black";
+            document.getElementById("img1").src = "https://rb.gy/g7msx";
+        }
+    }
+</script>
+
+<body>
+    <button id="button1" onclick="onClick()" style="background-color: white; color:black;">Home Jersey</button>
+    <img id="img1" src="https://rb.gy/g7msx" alt="alt-test" width="500" height="500">
+</body>
+
+</html>

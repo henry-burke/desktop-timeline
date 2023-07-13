@@ -1,0 +1,76 @@
+.dropbtn {
+  background-color: #cfb53b;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* content hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* links inside dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* change color on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* show menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* change color of button when dropdown content shown */
+.dropdown:hover .dropbtn {
+  background-color: #ac942a;
+}
+
+/* multi column table */
+table {
+  table-layout: fixed;
+  width: auto;
+  text-align: left;
+}
+
+td {
+  width: auto;
+}
+
+/* multi column content styling */
+.dropdown-content td {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+/* change color of buttons on hover */
+.dropdown-content td:hover {
+  background-color: #ddd;
+}
+
+table tr:first-of-type td {
+  font-weight: bold;
+}
+
+table tr:first-of-type td:hover {
+  background-color: #f1f1f1;
+}

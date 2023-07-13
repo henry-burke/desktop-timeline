@@ -1,0 +1,49 @@
+:root {
+    --text-color: hsl(226.67deg 11.84% 70.2%);
+}
+
+.tl-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.tl-grid-container a {
+    padding: 2rem;
+
+    border-color: var(--text-color);
+    border-block-end: solid;
+
+    text-align: center;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: larger;
+}
+
+.tl-grid-container a:target {
+    border: solid;
+}
+
+.tl-grid-container a:nth-child(10n + 5),
+.tl-grid-container a:nth-child(10n + 6) {
+    border: none;
+}
+
+.tl-grid-container a:nth-child(10n) {
+    border: solid;
+    border-left: none;
+    border-radius: 0 50px 50px 0;
+}
+
+.tl-grid-container a:nth-child(10n + 11) {
+    border: solid;
+    border-right: none;
+    border-radius: 50px 0 0 50px;
+}
+
+
+
+/* Dark Mode */
+html {
+    background-color: rgb(29, 30, 34);
+}
