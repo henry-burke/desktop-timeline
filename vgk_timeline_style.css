@@ -1,0 +1,128 @@
+/* Dark Mode START */
+
+:root {
+    --text-color: hsl(226.67deg 11.84% 70.2%);
+}
+
+* {
+    color: var(--text-color);
+}
+
+html {
+    background-color: rgb(29, 30, 34);
+    scroll-behavior: smooth;
+}
+
+/* Dark Mode END */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'verdana', sans-serif;
+}
+
+h1 {
+    margin: 50px 0;
+}
+
+.tl-wrapper h2 {
+    color: gray;
+    font-weight: normal;
+    margin: 20px, 0;
+    transition: scale 1.2s ease, color 1.2s ease, border 0.5s ease;
+}
+
+h2.active {
+    color: goldenrod;
+    scale: 1.25;
+    border-bottom: solid maroon;
+}
+
+.tl-wrapper {
+    display: grid;
+    /* repeat( (# OF COLUMNS), 1fr ) */
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(125px, min-content);
+    justify-content: center;
+    width: clamp(500px, 1000px, 2000px);
+    overflow: hidden;
+    margin-block-end: 200px;
+}
+
+.year-info {
+    display: none;
+}
+
+.year-info.active {
+    display: block;
+    height: 600px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.time-line {
+    display: block;
+    position: relative;
+    background-color: maroon;
+    width: 100%;
+    height: 5px;
+}
+
+.time-line.before {
+    transform: translateX(-50%) translateY(300%);
+    z-index: -1;
+}
+
+.time-line.after {
+    transform: translateX(50%) translateY(-15px);
+    z-index: -1;
+}
+
+button.button-year-select {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    background-color: maroon;
+    border: none;
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    transition: background-color 1.2s ease, scale 1.2s linear;
+}
+
+button.button-year-select.active {
+    background-color: goldenrod;
+    scale: 1.4;
+    border: solid white;
+}
+
+div.time-line.active {
+    background-color: goldenrod;
+}
+
+.info-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 50px 0px;
+}
+
+/* SIZING INFO */
+
+@media (max-width: 900px) {
+    .tl-wrapper {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 650px) {
+    .tl-wrapper {
+        max-width: 475px;
+    }
+}
