@@ -30,13 +30,12 @@ h1 {
     color: gray;
     font-weight: normal;
     margin: 20px, 0;
-    transition: scale 1.2s ease, color 1.2s ease, border 0.5s ease;
+    transition: scale 1.2s ease, color 1.2s ease;
 }
 
 h2.active {
     color: goldenrod;
     scale: 1.25;
-    border-bottom: solid maroon;
 }
 
 .tl-wrapper {
