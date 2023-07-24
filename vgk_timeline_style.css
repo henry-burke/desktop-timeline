@@ -30,13 +30,12 @@ h1 {
     color: gray;
     font-weight: normal;
     margin: 20px, 0;
-    transition: scale 1.2s ease, color 1.2s ease, border 0.5s ease;
+    transition: scale 1.2s ease, color 1.2s ease;
 }
 
 h2.active {
     color: goldenrod;
     scale: 1.25;
-    border-bottom: solid maroon;
 }
 
 .tl-wrapper {
@@ -73,6 +72,7 @@ h2.active {
     background-color: maroon;
     width: 100%;
     height: 5px;
+    box-shadow: 0px 3px 20px rgba(255, 255, 255, 0.1);
 }
 
 .time-line.before {
@@ -109,11 +109,139 @@ div.time-line.active {
 
 .info-wrapper {
     width: 100%;
-    text-align: center;
     padding: 50px 0px;
 }
 
-/* SIZING INFO */
+.info-wrapper .back-button-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.info-wrapper .back-button {
+    background-image: linear-gradient(144deg, #B78628, maroon 50%, #FCC201);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-shadow: 8px 16px 20px rgba(218, 165, 32, 0.05);
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 20px;
+    padding: 3px;
+    cursor: pointer;
+    margin-block-start: 25px;
+}
+
+.info-wrapper .back-button:active,
+.info-wrapper .back-button:hover {
+    outline: 0;
+}
+
+.info-wrapper .back-button span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    transition: 0.5s;
+}
+
+.info-wrapper .back-button:hover span {
+    background: none;
+}
+
+.year-info {
+    text-align: left;
+}
+
+/* INFO STYLING */
+.year-info h2 {
+    text-align: center;
+}
+
+.year-info h3 {
+    margin: 0 0 20px 0;
+}
+
+.year-info .img-container img {
+    box-shadow: 8px 16px 20px rgba(150, 150, 150, 0.1);
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
+}
+
+.year-info .img-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-block-end: 50px;
+}
+
+.year-info .time-post {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.time-post .left {
+    height: min-content;
+    width: 48%;
+    margin: 5%;
+    border: solid goldenrod;
+    border-radius: 10px;
+    background-color: rgb(45, 45, 45);
+    padding: 20px;
+    box-shadow: 8px 16px 20px rgba(150, 150, 150, 0.1);
+}
+
+.time-post .right {
+    height: min-content;
+    width: 48%;
+    margin: 5%;
+    border: solid goldenrod;
+    border-radius: 10px;
+    background-color: rgb(45, 45, 45);
+    padding: 20px;
+    box-shadow: 8px 16px 20px rgba(150, 150, 150, 0.1);
+}
+
+.time-post .center-line {
+    width: 5px;
+    height: calc(100% -50px);
+    background-color: white;
+}
+
+.time-post img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.year-info .time-post .dot {
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    /* left: 0;
+    right: 0; */
+    margin-top: 10%;
+    background-color: goldenrod;
+    border: solid 5px #fff;
+    border-radius: 100px;
+    z-index: 300;
+}
+
+.year-info .time-post .reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+
+.year-info .time-post .reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* SIZING */
 
 @media (max-width: 900px) {
     .tl-wrapper {
@@ -124,5 +252,16 @@ div.time-line.active {
 @media (max-width: 650px) {
     .tl-wrapper {
         max-width: 475px;
+    }
+
+    .year-info .time-post {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .year-info .time-post .dot,
+    .year-info .time-post .center-line {
+        display: none;
     }
 }

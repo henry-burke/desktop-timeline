@@ -90,7 +90,7 @@ const animateLine = (prevElement, currElement, lineList, buttonList) => {
             lineList[2 * i + 1].style.transition = `background-color ${duration}s ease ${delay}s`;
         }
         buttonList[currIndex].style.transition = `background-color ${duration}s ease ${delay}s, scale ${duration}s linear ${delay}s`;
-        currHeader.style.transition = `color ${duration}s ease ${delay}s, scale ${duration}s linear ${delay}s, border 0.5s ease`;
+        currHeader.style.transition = `color ${duration}s ease ${delay}s, scale ${duration}s linear ${delay}s`;
 
         // previous element is AFTER the new selection
     } else {
@@ -106,7 +106,7 @@ const animateLine = (prevElement, currElement, lineList, buttonList) => {
             lineList[2 * i].style.transition = `background-color ${duration}s ease ${delay}s`;
         }
         buttonList[currIndex].style.transition = `background-color ${duration}s ease ${delay}s, scale ${duration}s linear ${delay}s`;
-        currHeader.style.transition = `color ${duration}s ease ${delay}s, scale ${duration}s linear ${delay}s, border 0.5s ease`;
+        currHeader.style.transition = `color ${duration}s ease ${delay}s, scale ${duration}s linear ${delay}s`;
     }
     buttonList[prevIndex].style.transition = '';
     prevHeader.style.transition = '';
@@ -135,3 +135,21 @@ const autoScroll = (element, e, top) => {
         behavior: "smooth"
     });
 }
+
+const reveal = () => {
+    let revealImg = document.querySelectorAll(".reveal");
+
+    for (let i = 0; i < revealImg.length; i++) {
+        let windowHeight = window.innerHeight;
+        let elementTop = revealImg[i].getBoundingClientRect().top;
+        let elementVisible = 175;
+
+        if (elementTop < (windowHeight - elementVisible)) {
+            revealImg[i].classList.add("active");
+        } else {
+            revealImg[i].classList.remove("active");
+        }
+    }
+}
+
+window.addEventListener("scroll", reveal);
