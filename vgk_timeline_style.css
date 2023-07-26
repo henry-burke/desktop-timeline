@@ -1,10 +1,10 @@
 :root {
     --text-color: #aaaebc;
-    --dark-background-color: #1a1a1a;
-    --light-background-color: #a0b4be;
-    --gold-color: #bb8f3a;
+    --dark-background-color: #333f42;
+    --light-background-color: hsl(192, 13%, 60%);
+    --gold-color: #b4975a;
     --shadow-color: 0deg 0% 0%;
-    --box-shadow:
+    /* --box-shadow:
         0.4px 0.5px 0.7px hsl(var(--shadow-color) / 0.33),
         2.5px 3.1px 4.5px -0.4px hsl(var(--shadow-color) / 0.33),
         4.6px 5.8px 8.3px -0.7px hsl(var(--shadow-color) / 0.33),
@@ -12,7 +12,7 @@
         12.2px 15.3px 22px -1.4px hsl(var(--shadow-color) / 0.33),
         19px 23.8px 34.3px -1.8px hsl(var(--shadow-color) / 0.33),
         29px 36.3px 52.3px -2.1px hsl(var(--shadow-color) / 0.33),
-        42.6px 53.4px 76.8px -2.5px hsl(var(--shadow-color) / 0.33);
+        42.6px 53.4px 76.8px -2.5px hsl(var(--shadow-color) / 0.33); */
 
     --low-shadow:
         0.4px 0.5px 0.7px hsl(var(--shadow-color) / 0.35),
@@ -27,20 +27,6 @@
 
 html {
     scroll-behavior: smooth;
-
-    /* background:
-        radial-gradient(64% 70% at 7% 110%,
-            #ebc84bcc 0%,
-            #f7d66233 52%,
-            #f7d66200 100%),
-        linear-gradient(7deg,
-            #a0b4becc 0%,
-            #80808033 47%,
-            #a0b4be 72%),
-        radial-gradient(88% 0% at -1% 112%,
-            #a0b4be 0%,
-            #bd9139 100%); */
-
     background: radial-gradient(150% 100% at 16% 130%,
             rgba(187, 143, 58, 1) 26%,
             rgba(160, 180, 190, 1) 89%);
@@ -52,7 +38,6 @@ body {
     align-items: center;
     font-family: 'verdana', sans-serif;
     height: auto;
-
 }
 
 h1 {
@@ -74,7 +59,9 @@ h1 {
         0 20px 20px rgba(0, 0, 0, .15);
 }
 
-/* Main Timeline */
+
+/* MAIN TIMELINE START */
+
 
 .tl-wrapper {
     display: grid;
@@ -88,7 +75,7 @@ h1 {
     padding-block-end: 40px;
 }
 
-.input-container {
+.year-input-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,14 +83,14 @@ h1 {
     text-align: center;
 }
 
-.input-container h2 {
+.year-input-container h2 {
     color: var(--dark-background-color);
     font-weight: normal;
     margin: 20px, 0;
     transition: scale 1.2s ease, color 1.2s ease;
 }
 
-.input-container h2.active {
+.year-input-container h2.active {
     color: var(--gold-color);
     scale: 1.25;
 }
@@ -161,16 +148,25 @@ button.button-year-select.active {
     width: 100%;
 }
 
-/* Info Page Nav & Outer Wrappers */
+
+/* MAIN TIMELINE END */
+
+
+/* INFO PAGES START*/
+
+
 .info-wrapper {
     width: 100%;
-    padding: 50px 0 0 0;
+    padding: 10px 0 0 0;
 }
+
+
+/* INFO PAGES -> STICKY NAV BAR & MAJOR EVENTS NAV BAR START */
+
 
 .info-wrapper .nav-button-wrapper {
     display: flex;
     justify-content: center;
-    gap: 5px;
     z-index: 4;
 }
 
@@ -181,8 +177,99 @@ button.button-year-select.active {
     right: 50%;
 }
 
+.retake-space {
+    height: 60px;
+}
+
 .info-wrapper .nav-button {
-    background-image: linear-gradient(144deg, var(--light-background-color), var(--gold-color) 50%, var(--dark-background-color));
+    background-image: linear-gradient(90deg, var(--gold-color), var(--light-background-color) 50%, var(--gold-color));
+    border: 0;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 20px;
+    padding: 3px 0px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    box-shadow: var(--low-shadow);
+}
+
+.info-wrapper .nav-button:active,
+.info-wrapper .nav-button:hover,
+.major-events-wrapper .major-button:active,
+.major-events-wrapper .major-button:hover {
+    outline: 0;
+}
+
+.info-wrapper .nav-button span {
+    background-color: rgb(45, 45, 45);
+    padding: 16px 24px;
+    transition: 0.5s;
+    min-width: 175px;
+    max-width: max-content;
+}
+
+.info-wrapper .nav-button:first-child {
+    background-image: linear-gradient(90deg, var(--gold-color), var(light-background-color) 50%, var(--gold-color));
+    border: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 20px;
+    padding: 3px 0 3px 3px;
+    cursor: pointer;
+}
+
+.info-wrapper .nav-button:first-child span {
+    background-color: rgb(45, 45, 45);
+    padding: 16px 24px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    transition: 0.5s;
+    min-width: 175px;
+    max-width: max-content;
+}
+
+.info-wrapper .nav-button:last-child {
+    background-image: linear-gradient(90deg, var(--gold-color), var(--light-background-color) 50%, var(--gold-color));
+    border: 0;
+    box-sizing: border-box;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 20px;
+    padding: 3px 3px 3px 0;
+    cursor: pointer;
+}
+
+.info-wrapper .nav-button:last-child span {
+    background-color: rgb(45, 45, 45);
+    padding: 16px 24px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    transition: 0.5s;
+    min-width: 175px;
+    max-width: max-content;
+}
+
+.info-wrapper .nav-button:hover span,
+.major-events-wrapper .major-button:hover span {
+    background: none;
+    color: var(--dark-background-color);
+}
+
+.major-events-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-block-start: 25px;
+}
+
+.major-events-wrapper .major-button {
+    background-image: linear-gradient(90deg, var(--light-background-color), var(--gold-color) 50%, var(--dark-background-color));
     border: 0;
     border-radius: 8px;
     box-sizing: border-box;
@@ -191,14 +278,10 @@ button.button-year-select.active {
     font-size: 20px;
     padding: 3px;
     cursor: pointer;
+    box-shadow: var(--low-shadow);
 }
 
-.info-wrapper .nav-button:active,
-.info-wrapper .nav-button:hover {
-    outline: 0;
-}
-
-.info-wrapper .nav-button span {
+.major-events-wrapper .major-button span {
     background-color: rgb(45, 45, 45);
     padding: 16px 24px;
     border-radius: 6px;
@@ -207,11 +290,10 @@ button.button-year-select.active {
     max-width: max-content;
 }
 
-.info-wrapper .nav-button:hover span {
-    background: none;
-}
 
-/* Individual Year Page Info */
+/* INFO PAGES -> STICKY NAV BAR & MAJOR EVENTS NAV BAR END */
+
+
 .year-info {
     display: none;
     text-align: left;
@@ -223,20 +305,6 @@ button.button-year-select.active {
     height: auto;
 }
 
-.major-events-nav {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-block-start: 5px;
-    margin-block-end: 30px;
-}
-
-.major-events-nav button {
-    background-color: rgb(45, 45, 45);
-}
-
-/* INFO STYLING */
-
 .year-header-wrapper {
     position: relative;
     display: flex;
@@ -244,6 +312,7 @@ button.button-year-select.active {
     align-items: center;
     width: 100%;
     height: 400px;
+    margin-block-start: 25px;
 }
 
 .year-header-wrapper h2 {
@@ -259,16 +328,17 @@ button.button-year-select.active {
     width: 400px;
     height: 400px;
     border-radius: 200px;
+    border-radius: 20px;
     position: absolute;
     object-fit: cover;
     background-attachment: fixed;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--low-shadow);
 }
 
 .year-header-wrapper .ad {
     width: 200px;
     height: 200px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--low-shadow);
 }
 
 .year-info h3 {
@@ -288,7 +358,7 @@ button.button-year-select.active {
     border-radius: 10px;
     background-color: rgb(45, 45, 45);
     padding: 20px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--low-shadow);
 }
 
 .time-post .right {
@@ -299,7 +369,7 @@ button.button-year-select.active {
     border-radius: 10px;
     background-color: rgb(45, 45, 45);
     padding: 20px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--low-shadow);
 }
 
 .time-post .center-line {
@@ -341,7 +411,10 @@ button.button-year-select.active {
     opacity: 1;
 }
 
-/* Learn More Button */
+
+/* INFO PAGES-> LEARN MORE BUTTON START */
+
+
 .learn-button-wrapper {
     display: flex;
     justify-content: center;
@@ -428,7 +501,13 @@ a:hover .button-text {
     color: var(--dark-background-color);
 }
 
-/* Sizing */
+
+/* INFO PAGES-> LEARN MORE BUTTON END */
+/* INFO PAGES END */
+
+
+/* SIZING START */
+
 
 @media (max-width: 900px) {
     .tl-wrapper {
@@ -457,3 +536,6 @@ a:hover .button-text {
         width: 80vw;
     }
 }
+
+
+/* SIZING END */
