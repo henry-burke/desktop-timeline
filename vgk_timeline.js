@@ -37,10 +37,11 @@ tlWrapper.addEventListener('click', (e) => {
         'var(--dark-background-color)',
         'active');
 
-    showInfo(parseInt(Array.prototype.indexOf.call(buttonList, currElement)));
-
     let prevIndex = parseInt(Array.prototype.indexOf.call(buttonList, prevElement));
     let currIndex = parseInt(Array.prototype.indexOf.call(buttonList, currElement));
+
+    showInfo(currIndex);
+
     let delay = Math.abs(currIndex - prevIndex) * 1000 * (0.5 / Math.E);
     if (Math.abs(currIndex - prevIndex) < 5) {
         delay += 350;
@@ -48,15 +49,7 @@ tlWrapper.addEventListener('click', (e) => {
     setTimeout(function () { autoScroll(currElement, e); }, delay);
 });
 
-const backButton = document.querySelectorAll('.back-button');
-
-backButton.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        autoScroll(e.target, e, 0);
-    });
-});
-
-
+// changes colors of main timeline buttons based on year clicked
 const changeColor = (elementList, pastColor, futureColor, classBreak) => {
     let changeColor = true;
     elementList.forEach((element) => {
@@ -70,6 +63,7 @@ const changeColor = (elementList, pastColor, futureColor, classBreak) => {
     });
 }
 
+// changes colors of main timeline based on year clicked
 const animateLine = (prevElement, currElement, lineList, buttonList) => {
     let duration = 0.15;
     let delay = 0.2;
@@ -114,6 +108,7 @@ const animateLine = (prevElement, currElement, lineList, buttonList) => {
     prevHeader.style.transition = '';
 }
 
+// shows a given year's individual timeline
 const showInfo = (index) => {
     let infoPages = document.querySelectorAll('.year-info');
     infoPages.forEach((p) => {
@@ -124,6 +119,7 @@ const showInfo = (index) => {
     infoPages[index].classList.add('active');
 }
 
+// autoscrolls to specified value
 const autoScroll = (element, e, top) => {
     e.preventDefault();
     let offsetTop = 0;
@@ -138,6 +134,7 @@ const autoScroll = (element, e, top) => {
     });
 }
 
+// slowly reveals time posts for individual years as scrolled past
 const reveal = () => {
     let revealImg = document.querySelectorAll(".reveal");
 
@@ -153,19 +150,54 @@ const reveal = () => {
         }
     }
 }
-
 window.addEventListener("scroll", reveal);
 
+// sticks the NAV to top of page when scrolled past
 const makeSticky = () => {
     let makeStick = document.querySelector(".sticky");
     let listener = document.querySelector(".sticky-listener");
     let elementTop = listener.getBoundingClientRect().top;
 
     if (elementTop < 1) {
+        listener.classList.add("retake-space")
         makeStick.classList.add("scroll-past");
     } else {
+        listener.classList.remove("retake-space");
         makeStick.classList.remove("scroll-past");
     }
-}
 
+
+}
 window.addEventListener("scroll", makeSticky);
+
+// back button auto scrolls to top of page
+const backButton = document.querySelectorAll('.back-button');
+backButton.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        autoScroll(e.target, e, 0);
+    });
+});
+
+// previous year button is not allowed for first year
+document.querySelector(".prev").addEventListener('mouseover', (e) => {
+    let buttonList = document.querySelectorAll('.button-year-select');
+    let currElement = document.querySelector('.button-year-select.active');
+    let index = parseInt(Array.prototype.indexOf.call(buttonList, currElement));
+    if (index < 1) {
+        e.target.style.cursor = 'not-allowed';
+    } else {
+        e.target.style.cursor = 'pointer';
+    }
+});
+
+// next year button is not allowed for last year
+document.querySelector(".next").addEventListener('mouseover', (e) => {
+    let buttonList = document.querySelectorAll('.button-year-select');
+    let currElement = document.querySelector('.button-year-select.active');
+    let index = parseInt(Array.prototype.indexOf.call(buttonList, currElement));
+    if (index == buttonList.length - 1) {
+        e.target.style.cursor = 'not-allowed';
+    } else {
+        e.target.style.cursor = 'pointer';
+    }
+});
