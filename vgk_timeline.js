@@ -45,12 +45,10 @@ tlWrapper.addEventListener('click', (e) => {
     if (Math.abs(currIndex - prevIndex) < 5) {
         delay += 350;
     }
-    console.log(delay);
     setTimeout(function () { autoScroll(currElement, e); }, delay);
 });
 
 const backButton = document.querySelectorAll('.back-button');
-console.log(backButton);
 
 backButton.forEach((button) => {
     button.addEventListener('click', (e) => {
@@ -157,3 +155,17 @@ const reveal = () => {
 }
 
 window.addEventListener("scroll", reveal);
+
+const makeSticky = () => {
+    let makeStick = document.querySelector(".sticky");
+    let listener = document.querySelector(".sticky-listener");
+    let elementTop = listener.getBoundingClientRect().top;
+
+    if (elementTop < 1) {
+        makeStick.classList.add("scroll-past");
+    } else {
+        makeStick.classList.remove("scroll-past");
+    }
+}
+
+window.addEventListener("scroll", makeSticky);
