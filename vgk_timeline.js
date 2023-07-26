@@ -28,13 +28,13 @@ tlWrapper.addEventListener('click', (e) => {
     animateLine(prevElement, currElement, lineList, buttonList);
 
     changeColor(buttonList,
-        'goldenrod',
-        'maroon',
+        'var(--gold-color)',
+        'var(--dark-background-color)',
         'active');
 
     changeColor(lineList,
-        'goldenrod',
-        'maroon',
+        'var(--gold-color)',
+        'var(--dark-background-color)',
         'active');
 
     showInfo(parseInt(Array.prototype.indexOf.call(buttonList, currElement)));
@@ -49,9 +49,13 @@ tlWrapper.addEventListener('click', (e) => {
     setTimeout(function () { autoScroll(currElement, e); }, delay);
 });
 
-const backButton = document.querySelector('.back-button');
-backButton.addEventListener('click', (e) => {
-    autoScroll(e.target, e, 0);
+const backButton = document.querySelectorAll('.back-button');
+console.log(backButton);
+
+backButton.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        autoScroll(e.target, e, 0);
+    });
 });
 
 
