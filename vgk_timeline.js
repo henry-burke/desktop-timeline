@@ -1,3 +1,7 @@
+let buttonList = document.querySelectorAll('.button-year-select');
+let lineList = document.querySelectorAll('.time-line');
+
+
 const tlWrapper = document.querySelector('.tl-wrapper');
 
 tlWrapper.addEventListener('click', (e) => {
@@ -5,12 +9,11 @@ tlWrapper.addEventListener('click', (e) => {
     if (!isButton) {
         return;
     }
-    let buttonList = document.querySelectorAll('.button-year-select');
-    let lineList = document.querySelectorAll('.time-line');
+    yearChange(e, e.target)
+});
 
-    let currElement = e.target;
+const yearChange = (e, currElement) => {
     let prevElement = document.querySelector('.button-year-select.active');
-
     // remove .active from previous header, line, and button
     let prevWrapper = document.querySelectorAll('.active');
     prevWrapper.forEach((element) => {
@@ -42,12 +45,17 @@ tlWrapper.addEventListener('click', (e) => {
 
     showInfo(currIndex);
 
+    delayAnimate(prevIndex, currIndex, e);
+}
+
+// delay scroll animation until main timeline animation has completed
+const delayAnimate = (prevIndex, currIndex, e) => {
     let delay = Math.abs(currIndex - prevIndex) * 1000 * (0.5 / Math.E);
     if (Math.abs(currIndex - prevIndex) < 5) {
         delay += 350;
     }
-    setTimeout(function () { autoScroll(currElement, e); }, delay);
-});
+    setTimeout(function () { autoScroll(e.target, e); }, delay);
+}
 
 // changes colors of main timeline buttons based on year clicked
 const changeColor = (elementList, pastColor, futureColor, classBreak) => {
@@ -178,6 +186,13 @@ backButton.forEach((button) => {
     });
 });
 
+const majorEventButtons = document.querySelectorAll('.major-button');
+majorEventButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        autoScroll(e.target, e);
+    })
+})
+
 // previous year button is not allowed for first year
 document.querySelector(".prev").addEventListener('mouseover', (e) => {
     let buttonList = document.querySelectorAll('.button-year-select');
@@ -199,5 +214,28 @@ document.querySelector(".next").addEventListener('mouseover', (e) => {
         e.target.style.cursor = 'not-allowed';
     } else {
         e.target.style.cursor = 'pointer';
+    }
+});
+
+// previous year button
+document.querySelector(".prev").addEventListener('click', (e) => {
+    let buttonList = document.querySelectorAll('.button-year-select');
+    let currElement = document.querySelector('.button-year-select.active');
+    let index = parseInt(Array.prototype.indexOf.call(buttonList, currElement));
+
+    if (!(e.target.style.cursor == 'not-allowed')) {
+        buttonList[index - 1].click();
+        reveal();
+    }
+});
+
+// next year button
+document.querySelector(".next").addEventListener('click', (e) => {
+    let buttonList = document.querySelectorAll('.button-year-select');
+    let currElement = document.querySelector('.button-year-select.active');
+    let index = parseInt(Array.prototype.indexOf.call(buttonList, currElement));
+    if (!(e.target.style.cursor == 'not-allowed')) {
+        buttonList[index + 1].click();
+        reveal();
     }
 });
